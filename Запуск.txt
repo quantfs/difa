@@ -1,0 +1,10 @@
+1. Запустить консоль open server.
+2. Перейти в папку проекта.
+3. npm run dev
+4. Cоздать второе окно консоли (путь - папка проекта).
+5. php artisan serve.
+
+npm install -g serve
+# -s flag means serve it in Single-Page Application mode
+# which deals with the routing problem below
+serve -s dist
