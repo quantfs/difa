@@ -80,7 +80,7 @@
 <!--                   </FileUpload>-->
                    <div v-for="doc in listDocuments" class="mb-3">
                        <div class="mb-1">{{ doc }}</div>
-                       <FileUpload name="demo[]" chooseLabel="Прикрепить" uploadLabel="Загрузить" cancelLabel="Отменить" url="./upload.php" accept=".doc,.docx" :maxFileSize="1000000" @remove="onUpload">
+                       <FileUpload name="demo[]" :customUpload="true" chooseLabel="Прикрепить" uploadLabel="Загрузить" cancelLabel="Отменить" url="/api/add_file" accept=".doc,.docx" :maxFileSize="1000000" @remove="onFileRemove" @select="onFileSelect(doc)" @before-upload="onFileBeforeUpload" @upload="onFileUpload" @onChange="onFileChange" @uploader="onFileUploader">
                            <template #empty>
                                <p></p>
                            </template>
@@ -110,6 +110,7 @@ import InputNumber from 'primevue/inputnumber';
 import FileUpload from 'primevue/fileupload';
 import Button from 'primevue/button';
 import ScrollPanel from 'primevue/scrollpanel';
+import axios from "axios";
 
 export default {
     name: "InputData",
@@ -204,6 +205,7 @@ export default {
                 'Акт отбраковки кабеля',
             ],
             disableQuestionnaire: false,
+            doc: ''
         }
     },
     computed: {
@@ -245,9 +247,55 @@ export default {
                 this.errorOperatingTime = false;
             }
         },
-        onUpload() {
-            console.log('onUpload');
+        onFileSelect(doc) {
+            this.doc = doc;
+            // axios.post('/api/add_file', {})
+            //     .then(res => {
+            //         console.log(res);
+            //     })
+            //     .catch(err => {
+            //         console.log(err);
+            //     });
+            console.log('onFileSelect', doc);
         },
+        onFileBeforeUpload(e) {
+            console.log('onFileBeforeUpload');
+            console.log(e.target);
+        },
+        onFileUpload() {
+            console.log('onFileUpload');
+        },
+        onFileChange() {
+            console.log('onFileChange');
+        },
+        onFileUploader(e) {
+            const fileUp = e.files[0];
+            //console.log(doc);
+
+            const body = new FormData();
+            body.append("id", this.id);
+            body.append("folder", this.doc);
+            body.append("file", fileUp);
+
+            axios.post(`/api/add_file`,
+                body,
+                {
+                    headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then(res => {
+                    console.log(res);
+                })
+                .catch(err => {
+                    console.log(`Error - add_file: ${err}`);
+                });
+
+            console.log('onFileUploader');
+        },
+
+
+
         onChangeQuestionnaire() {
             this.disableQuestionnaire = true;
         },
@@ -417,3 +465,5 @@ export default {
 }
 
 </style>
+
+//https://codesandbox.io/s/primevue-fileuploader-custom-q2dqhh?file=/src/FileUploadDemo.vue:989-1009

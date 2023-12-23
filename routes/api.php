@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InputDataController;
@@ -25,4 +26,6 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
     Route::post('/input_data', [InputDataController::class, 'store']);
     Route::delete('input_data/{id}', [InputDataController::class, 'delete']);
     Route::put('input_data/{id}', [InputDataController::class, 'update']);
+
+    Route::post('/add_file', [FileController::class, 'store']);
 });
