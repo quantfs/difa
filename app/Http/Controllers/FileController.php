@@ -11,6 +11,7 @@ use App\Models\EntityValue;
 use App\Repositories\EntityValueRepository;
 use App\Services\EntityValueService;
 use App\Services\FieldTypeService;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
@@ -68,8 +69,26 @@ class FileController
         }
     }
 
-    public function store(FileRequest $request)  {
+    public function store(FileRequest $request): false|string  {
         $file = FileHelper::addFileToStorage($request->id, $request->folder, $request['file']);
+
+        if($file) {
+            return FileHelper::fileRecordModification($request->id, $request->folder, null, $file);
+        } else {
+            return false;
+        }
+    }
+
+    public function storeTest(Request $request)  {
+        //$file = FileHelper::addFileToStorage(1, "New", $request['file']);
+        $file = FileHelper::addFileToStorage(1, "New", $request['file']);
+//        if(!empty($request['image'])) {
+//
+//
+//            //move_uploaded_file($request['image']['tmp_name'], '/test/uploaded/tmp.jpg');//.$_FILES['image']['name']);
+//            echo var_dump($request['image']);
+//        }
+
 
         return $file;
     }

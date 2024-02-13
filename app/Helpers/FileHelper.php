@@ -6,6 +6,7 @@ use App\Enums\FieldTypeEnum;
 use App\Models\Entity;
 use App\Models\EntityFieldFixedValue;
 use App\Models\EntityValue;
+use App\Models\InputData;
 use App\Models\User;
 use App\Repositories\EntityFieldRepository;
 use App\Repositories\EntityValueRepository;
@@ -115,15 +116,31 @@ class FileHelper
         return $result;
     }
 
-    public static function fileRecordModification(Entity $entity, string $recordId, string $field, ?string $oldFile, ?string $newFile): EntityValue
+    public static function fileRecordModification(string $id, string $folder, ?string $oldFile, ?string $newFile)
     {
-        $entity_table = "table_" . $entity->hash;
-        $service = new EntityValueService($entity_table);
-        $data = array_values($service->getRecord($entity, $recordId))[0][$field];
+        $record = InputData::find($id);
+        $data = $record->documents;
+        //dd($data);
+
+//        if (isset($data[$folder])) {
+//            $arr = $data[$folder];
+//            dump($arr);
+//            $data[$folder][] = $newFile;
+//           //$data[$folder][] = $newFile;
+//            dump(1);
+//            dump($data);
+//        } else {
+//            $data[$folder][] = $newFile;
+//            dump(2);
+//        }
+
+
+        //dd($data);
 
         // add_file
         if(!$oldFile && $newFile) {
-            $data[] = $newFile;
+            $data[$folder][] = $newFile;
+            dump($data);
         }
         //delete_file
         if($oldFile && !$newFile) {
@@ -136,7 +153,7 @@ class FileHelper
             $data= array_replace($data, [$key => $newFile]);
         }
 
-        return $service->updateFile([$field => $data], $recordId);
+        return $record->update(['documents' => $data]);
     }
 }
 

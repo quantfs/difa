@@ -30,10 +30,7 @@
                         <svg class="mr-2 w-5 h-5" x="0px" y="0px" viewBox="0 0 24.03623 24" enable-background="new 0 0 24.03623 24" xml:space="preserve"><g id="Icons"><circle fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" cx="4.54468" cy="6.49328" r="3.99005"></circle><circle fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" cx="21.05901" cy="2.98025" r="2.47723"></circle><circle fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" cx="15.04747" cy="16.99606" r="2.47723"></circle><circle fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" cx="15.04747" cy="16.99606" r="6.48857"></circle><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" x1="21.07381" y1="2.98025" x2="21.05901" y2="2.98025"></line><circle fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" cx="4.54468" cy="6.49328" r="1.04198"></circle><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" x1="15.04747" y1="14.51884" x2="15.04747" y2="12.54263"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" x1="15.04747" y1="21.4495" x2="15.04747" y2="19.47329"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" x1="16.79913" y1="15.2444" x2="18.19652" y2="13.84701"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" x1="11.89841" y1="20.14512" x2="13.29581" y2="18.74773"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" x1="17.52469" y1="16.99606" x2="19.5009" y2="16.99606"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" x1="10.59403" y1="16.99606" x2="12.57024" y2="16.99606"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" x1="16.79913" y1="18.74773" x2="18.19652" y2="20.14512"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" x1="11.89841" y1="13.84701" x2="13.29581" y2="15.2444"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,2" x1="4.54468" y1="2.50322" x2="21.05901" y2="0.50302"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,2" x1="23.53623" y1="2.98025" x2="21.53603" y2="16.99606"></line><line fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="0,2" x1="1.61859" y1="9.19979" x2="9.942" y2="20.99715"></line></g></svg>
                         <span>Двигатель</span>
                     </template>
-                    <p>
-                        At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui
-                        officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.
-                    </p>
+                    <MotorTab class="pt-5"></MotorTab>
                 </TabPanel>
                 <TabPanel>
                     <template #header>
@@ -107,10 +104,12 @@ import TabView from 'primevue/tabview';
 import TabPanel from 'primevue/tabpanel';
 import InputData from "../tabs/InputData.vue";
 import PumpTab from "../tabs/PumpTab.vue";
+import MotorTab from "../tabs/MotorTab.vue";
+
 
 
 export default {
-    components: { TabMenu, Button, TabView, TabPanel, InputData, PumpTab },
+    components: { TabMenu, Button, TabView, TabPanel, InputData, PumpTab, MotorTab },
     data() {
         return {
             activeIndex: 1,

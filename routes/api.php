@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\FileController;
+use App\Http\Controllers\MotorDefectController;
+use App\Http\Controllers\MotorDetailController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\InputDataController;
@@ -29,3 +31,12 @@ Route::group(['middleware' => 'auth:sanctum'], function() {
 
     Route::post('/add_file', [FileController::class, 'store']);
 });
+
+Route::group(['namespace' => 'Motor', 'prefix' => 'motor'], function (){
+    Route::get('/details/index', [MotorDetailController::class, 'index']);
+    Route::get('/defects/index', [MotorDefectController::class, 'index']);
+    Route::get('/get_file', [MotorDefectController::class, 'getImage']);
+});
+
+Route::post('/test', [FileController::class, 'storeTest']);
+

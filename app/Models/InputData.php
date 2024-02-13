@@ -12,4 +12,8 @@ class InputData extends Model
     protected $table = 'input_data';
     protected $guarded = false;
     protected $dates = ['installation_date_at'];
+
+    protected $casts = [
+        'documents' => 'array'
+    ];
 }

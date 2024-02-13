@@ -1,0 +1,37 @@
+.my-div {
+    border: 1px solid green;
+    width: 100px;
+    height: 100px;
+}
+
+
+
+.pump-units {
+    width: 50%;
+}
+.pump-units button {
+    margin-bottom: 0.3rem;
+}
+.pump-checkout {
+    width: 100%;
+}
+.pump-checkout img {
+    margin-right: 5px;
+}
+.div-cb {
+    margin-bottom: 10px;
+}
+.pump-checkout p {
+    padding: 10px;
+    border: 1px solid lightgrey;
+}
+:deep(.p-scrollpanel-wrapper) {
+    z-index: 0;
+}
+:deep(.p-toggleable-content) {
+    height: 100%;
+}
+
+:deep(.p-panel-content) {
+    height: 100%;
+}
