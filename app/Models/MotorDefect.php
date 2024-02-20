@@ -10,4 +10,9 @@ class MotorDefect extends Model
     use HasFactory;
 
     protected $guarded = false;
+    protected $with = ['images'];
+
+    public function images () {
+        return $this->hasMany(MotorImage::class, 'defect_id', 'id');
+    }
 }

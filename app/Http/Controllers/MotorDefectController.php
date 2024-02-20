@@ -44,9 +44,8 @@ class MotorDefectController extends Controller
 
     public function getImage(Request $request) {
         $file = "esp/Motor/2.jpg";
-        //$file = "esp/Motor/1.png";
-        //$file = "esp/Motor/3.png";
-        $path = Storage::disk('public')->path($file);
+
+        $path = Storage::disk('public')->path('img//image_1707893464628_b0224f629f32972f58959f06a049dda0.png');
 
         $imageData = file_get_contents($path);
         $decodedImage = base64_encode($imageData);

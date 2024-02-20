@@ -30,15 +30,20 @@
             <Button label="temp" @click="getImage"/>
         </div>
         <ScrollPanel class="mr-3" style="width: 100%; height: 54vh">
+            <div v-if="detailDefects.length === 0" class="text-5xl">&#8592 Выберите деталь</div>
             <div v-if="detailDefects" class="flex flex-column" style="width: 98%;">
                 <div v-for="defect in detailDefects" :key="defect.id" class="flex pump-checkout mb-3">
 <!--                    <img src="../../js/img/1.Износ%20верхней%20шайбы.png" style="width: 200px">-->
-                    <img src="../../../storage/app/public/esp/Motor/1. Масло/1.1.Черное, потемневшее масло.png" style="width: 200px">
+<!--                    <img src="../../../storage/app/public/esp/Motor/1. Масло/1.1.Черное, потемневшее масло.png" style="width: 200px">-->
 <!--                    <img :src="images" style="width: 200px">-->
 <!--                    <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAAAUA-->
 <!--AAAFCAYAAACNbyblAAAAHElEQVQI12P4//8/w38GIAXDIBKE0DHxgljNBAAO-->
 <!--    9TXL0Y4OHwAAAABJRU5ErkJggg==" alt="Red dot" style="width: 100px"/>-->
-                    <img :src="`data:image/png;base64,${images}`" style="width: 200px"/>
+<!--                    <img :src="`data:image/png;base64,${images}`" style="width: 200px"/>-->
+<!--                    <img :src="`data:image/png;base64,${defect.images[0].data}`" style="width: 100px"/>-->
+
+                    <img :src="`data:image/png;base64,${defect.images[0].data}`" style="width: 300px; border: 1px solid grey"/>
+
 
 <!--                    <img :src="images.path" style="width: 200px">-->
 
@@ -112,6 +117,10 @@ export default {
         //this.images = Storage::url('esp/Motor/1.png');
     },
 
+    computed: {
+
+    },
+
     methods: {
         getMotorDetails() {
             axios.get('/api/motor/details/index')
@@ -124,7 +133,7 @@ export default {
             axios.get('/api/motor/defects/index')
                 .then(res => {
                     this.defects = res.data.data;
-                    //console.log(this.defects);
+                    console.log(this.defects);
                 })
         },
         getDetailDefects(detailId) {
@@ -169,7 +178,7 @@ export default {
                     console.log(`Error - get_file: ${err}`);
                 });
         },
-        getImage() {
+        getImage___() {
             // получаем данные base64
 //             const base64Data = "�PNG  IHDR\b�o&�IDAT\b�c���?� � ��1�X��5�юIEND�B�";
 //
@@ -190,6 +199,20 @@ export default {
                 .then(res => {
                     this.images = res.data.image;
                     console.log('buffer');
+
+
+                })
+                .catch(err => {
+                    console.log(`Error - get_file: ${err}`);
+                });
+        },
+
+        getImage() {
+            const rnd = Math.random();
+            axios.get(`/api/motor/get_file?a=${rnd}`)
+                .then(res => {
+                    this.images = res.data.image;
+                    console.log(res.data);
 
 
                 })

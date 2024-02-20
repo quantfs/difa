@@ -14,15 +14,17 @@ class MotorDefectSeeder extends Seeder
 	{
 		$data = [
 			[
+				'id' => '1',
 				'detail_id' => '1',
-				'code' => 'cernoe-potemevsee-maslo',
-				'defect' => 'Черное, потемевшее масло',
+				'code' => 'cernoe-potemnevsee-maslo',
+				'defect' => 'Черное, потемневшее масло',
 				'description' => 'Черное, потерявшее вязкость масло с различными примесями',
-				'picture' => 'images/1.Черное, потемевшее масло.png',
-				'note' => 'Примечание для 1.Черное, потемевшее масло',
+				'picture' => 'images/1.Черное, потемневшее масло.png',
+				'note' => 'Примечание для 1.Черное, потемневшее масло',
 				'reason' => 'Температурная деградация масла, Попадание примесей, Попадание скважной жидкости',
 			],
 			[
+				'id' => '2',
 				'detail_id' => '2',
 				'code' => 'potemnenie-statornyx-obmotok-peregrev',
 				'defect' => 'Потемнение статорных обмоток (перегрев)',
@@ -32,6 +34,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Перегрузка двигателя, Повышенное или пониженное напряжение, Низкая теплопередача',
 			],
 			[
+				'id' => '3',
 				'detail_id' => '2',
 				'code' => 'progar-izoliacii-lobovoi-obmotki-statora',
 				'defect' => 'Прогар изоляции лобовой обмотки статора',
@@ -41,6 +44,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Низкая теплопередача, Повышенное напряжение',
 			],
 			[
+				'id' => '4',
 				'detail_id' => '2',
 				'code' => 'progar-izoliacii-obmotki-v-pazu',
 				'defect' => 'Прогар изоляции обмотки в пазу',
@@ -50,6 +54,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Низкая теплопередача, Повышенное напряжение',
 			],
 			[
+				'id' => '5',
 				'detail_id' => '2',
 				'code' => 'vytekanie-razmiagshhenie-kompaunda-kpn-240',
 				'defect' => 'Вытекание (размягщение) компаунда КПН-240',
@@ -59,6 +64,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Наличие посторонних веществ в составе компаунда, Попадание влаги до отверждения компаунда КПН-240, Попадание скважной жидкости в процессе эксплуатации',
 			],
 			[
+				'id' => '6',
 				'detail_id' => '2',
 				'code' => 'sledy-kontakta-rotora-i-statora',
 				'defect' => 'Следы контакта ротора и статора',
@@ -68,6 +74,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Расширение ротора, которое ведет к контакту со слоем статора',
 			],
 			[
+				'id' => '7',
 				'detail_id' => '2',
 				'code' => 'dlia-kompaundirovannyx-ped-vozdusnye-polosti-v-kompaunde-plavlenie-kompaunda',
 				'defect' => 'Для компаундированных ПЭД – воздушные полости в компаунде (плавление компаунда)',
@@ -77,6 +84,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Попадание воды при эксплуатации',
 			],
 			[
+				'id' => '8',
 				'detail_id' => '2',
 				'code' => 'korpus-statora',
 				'defect' => 'Корпус статора',
@@ -86,6 +94,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Действие пластовой воды при эксплуатации',
 			],
 			[
+				'id' => '9',
 				'detail_id' => '3',
 				'code' => 'sledy-treniia-rotora-o-stator',
 				'defect' => 'Следы трения ротора о статор',
@@ -96,6 +105,7 @@ class MotorDefectSeeder extends Seeder
 ',
 			],
 			[
+				'id' => '10',
 				'detail_id' => '3',
 				'code' => 'postoronnie-primesi-v-pakete-rotora',
 				'defect' => 'Посторонние примеси в пакете ротора',
@@ -105,6 +115,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Загрязнение компаундом в результате термодеструкции материала, Загрязнение в результате разрушения фторопластовой изоляции или текстолитовых шайб  при эксплуатации',
 			],
 			[
+				'id' => '11',
 				'detail_id' => '4',
 				'code' => 'skrucivanie-vala-v-slicevoi-casti',
 				'defect' => 'Скручивание вала в шлицевой части',
@@ -114,6 +125,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Клин ротора',
 			],
 			[
+				'id' => '12',
 				'detail_id' => '4',
 				'code' => 'treshhina-na-vtulke',
 				'defect' => 'Трещина на втулке',
@@ -123,6 +135,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Хрупкое состояние за счет большой величины цементированного слоя',
 			],
 			[
+				'id' => '13',
 				'detail_id' => '4',
 				'code' => 'iznos-vtulki',
 				'defect' => 'Износ втулки',
@@ -132,6 +145,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Изнашивание при заедании и тяжелые условия работы',
 			],
 			[
+				'id' => '14',
 				'detail_id' => '4',
 				'code' => 'odnostoronnii-iznos-vala',
 				'defect' => 'Односторонний износ вала',
@@ -141,6 +155,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Неверная конструкция промежуточных подшипников, Отказ промежуточных подшипников, Работа в сильно искривленном положении, Агрессивное воздействие в горизонтальной скважине',
 			],
 			[
+				'id' => '15',
 				'detail_id' => '4',
 				'code' => 'slom-vala-v-slicevoi-casti-s-vozmoznym-provorotom-slicov-ustalostnyi-iznos',
 				'defect' => 'Слом вала в шлицевой части с возможным проворотом шлицов (усталостный износ)',
@@ -150,6 +165,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Воздействие переменных напряжений, Рассинхронизация СУ вследствие подклинивания ротора или неверной настройки',
 			],
 			[
+				'id' => '16',
 				'detail_id' => '4',
 				'code' => 'iznos-slicevoi-casti-vala',
 				'defect' => 'Износ шлицевой части вала',
@@ -159,6 +175,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Брак при сборке, Перегрузка, Наличие в соединении твердых частиц (песка)',
 			],
 			[
+				'id' => '17',
 				'detail_id' => '4',
 				'code' => 'slom-sponki-vala',
 				'defect' => 'Слом шпонки вала',
@@ -168,6 +185,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Абразивный износ, Фреттинг коррозия, Перегрузка',
 			],
 			[
+				'id' => '18',
 				'detail_id' => '4',
 				'code' => 'skrucivanie-sponocnogo-paza',
 				'defect' => 'Скручивание шпоночного паза',
@@ -177,6 +195,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Осевой износ ступеней, Несоосность, клин вала',
 			],
 			[
+				'id' => '19',
 				'detail_id' => '4',
 				'code' => 'skrucivanie-sponocnogo-paza-s-vozmoznym-slomom-vtulki',
 				'defect' => 'Скручивание шпоночного паза с возможным сломом втулки',
@@ -186,6 +205,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Подклинивание ротора',
 			],
 			[
+				'id' => '20',
 				'detail_id' => '4',
 				'code' => 'tverdyi-nalet-na-perexodnyx-muftax',
 				'defect' => 'Твердый налет на переходных муфтах',
@@ -195,6 +215,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Солеотложения',
 			],
 			[
+				'id' => '21',
 				'detail_id' => '4',
 				'code' => 'korroziia-mufty',
 				'defect' => 'Коррозия муфты',
@@ -204,6 +225,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Коррозия',
 			],
 			[
+				'id' => '22',
 				'detail_id' => '5',
 				'code' => 'ozog-golovki-dvigatelia',
 				'defect' => 'Ожог головки двигателя',
@@ -213,6 +235,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Короткое замыкание кабельной линии',
 			],
 			[
+				'id' => '23',
 				'detail_id' => '5',
 				'code' => 'tverdyi-nalet-na-naruznoi-poverxnosti-golovki-ili-osnovaniia',
 				'defect' => 'Твердый налет на наружной поверхности головки или основания',
@@ -222,6 +245,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Солеотложения',
 			],
 			[
+				'id' => '24',
 				'detail_id' => '5',
 				'code' => 'korpus-golovki-dvigatelia',
 				'defect' => 'Корпус головки двигателя',
@@ -231,6 +255,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'На основании исследований ЦЗЛ можно сказать, что трещина образовалась в результате термической обработки (закалки)  ',
 			],
 			[
+				'id' => '25',
 				'detail_id' => '5',
 				'code' => 'otlozeniia-na-golovke',
 				'defect' => 'Отложения на головке',
@@ -240,6 +265,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Образование отложений в результате термодеструкции масла и образование нерастворимых смолистых продуктов поликонденсации окисленного масла и солей органических кислот железа  ',
 			],
 			[
+				'id' => '26',
 				'detail_id' => '5',
 				'code' => 'tverdyi-nalet-na-korpuse',
 				'defect' => 'Твердый налет на корпусе',
@@ -249,6 +275,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Солеотложения',
 			],
 			[
+				'id' => '27',
 				'detail_id' => '5',
 				'code' => 'iznos-korpusa',
 				'defect' => 'Износ корпуса',
@@ -258,6 +285,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Электрохимическая коррозия от кабеля, Последствия монтажа и спуска',
 			],
 			[
+				'id' => '28',
 				'detail_id' => '5',
 				'code' => 'korroziia-i-razrusenie-rezbovyx-soedinenii-v-korpuse',
 				'defect' => 'Коррозия и разрушение резьбовых соединений в корпусе',
@@ -267,6 +295,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Коррозия',
 			],
 			[
+				'id' => '29',
 				'detail_id' => '5',
 				'code' => 'povrezdenie-rezby-osnovaniia',
 				'defect' => 'Повреждение резьбы основания',
@@ -276,6 +305,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Брак при сборке/разборке, Большие нагрузки при СПО',
 			],
 			[
+				'id' => '30',
 				'detail_id' => '5',
 				'code' => 'korroziia-osnovaniia',
 				'defect' => 'Коррозия основания',
@@ -285,6 +315,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Коррозия',
 			],
 			[
+				'id' => '31',
 				'detail_id' => '5',
 				'code' => 'korroziia-i-eroziia-golovy',
 				'defect' => 'Коррозия и эрозия головы',
@@ -294,6 +325,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Гидроабразивный износ и коррозия',
 			],
 			[
+				'id' => '32',
 				'detail_id' => '6',
 				'code' => 'kolodka-tokovvoda',
 				'defect' => 'Колодка токоввода',
@@ -303,6 +335,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Снижение диэлектрических свойств масла, Деградация диэлектрических свойств материала колодки, Проникновение пластовой жидкости со стороны муфты кабельного удлинителя',
 			],
 			[
+				'id' => '33',
 				'detail_id' => '6',
 				'code' => 'provoda-kolodki-tokovvoda',
 				'defect' => 'Провода колодки токоввода',
@@ -312,6 +345,7 @@ class MotorDefectSeeder extends Seeder
 				'reason' => 'Пробой изоляции проводов КТВ, в следствии  недостаточной изоляции',
 			],
 			[
+				'id' => '34',
 				'detail_id' => '7',
 				'code' => 'iznos-opornogo-podsipnika',
 				'defect' => 'Износ опорного подшипника',

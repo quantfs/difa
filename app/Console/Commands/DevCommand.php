@@ -3,7 +3,10 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Str;
+
+use Illuminate\Support\Facades\Storage;
 
 class DevCommand extends Command
 {
@@ -96,14 +99,22 @@ class DevCommand extends Command
         fclose($fd);
     }
 
-    private function makeDefects($unit, $detail, $path, $fd) : void
+    private function makeDefects($unit, $detail, $path, $fd, $countDefect, $dataArrImg) : int
     {
         // Составление массива одного дефекта
         $dir = $path.'/'.$unit.'/'.$detail;
+
+
         foreach ($this->units($dir, false) as $file) {
             //dd($pathInfo["filename"]);
             if (str_ends_with($file, '.txt')) {
+                $countDefect++;
+
                 $str = "\t\t\t[\n";
+                // id
+                fputs($fd, $str);
+                $str = "\t\t\t\t'id' => '$countDefect',\n";
+                dump($countDefect);
                 fputs($fd, $str);
                 // Деталь
                 $detailParse = trim(explode('.', $detail)[1]);
@@ -123,6 +134,8 @@ class DevCommand extends Command
                 $str = "\t\t\t\t'description' => '".$text."',\n";
                 fputs($fd, $str);
                 // Фотография
+                $pathInfo = pathinfo(basename($file));
+                $str = $this->addPicture($path.'/'.$unit.'/'.$detail, $unit, $detail, $path, $pathInfo["filename"], $countDefect, $dataArrImg[0]);
                 $str = "\t\t\t\t'picture' => 'images/".basename($file, '.txt').".png',\n";
                 fputs($fd, $str);
                 // Примечание
@@ -138,6 +151,40 @@ class DevCommand extends Command
                 fputs($fd, $str);
             }
         }
+
+        return $countDefect;
+    }
+
+    private function addPicture($dir, $unit, $detail, $path, $fileName, $countDefect, $fd) : string
+    {
+
+
+//        $dir = $path . '/' . $unit . '/' . $detail;
+        $fileName = trim(explode('.', $fileName)[1]);
+        foreach ($this->units($dir, false) as $file) {
+            if (str_ends_with($file, '.png') && str_contains($file, $fileName)) {
+                $date = Carbon::now();
+                $date->setTimezone('Europe/Moscow');
+                $timeInMilliseconds = $date->valueOf();
+                //$timeInDays = ceil($timeInMilliseconds / 1000 / 60 / 60 / 24);
+                $newFileName = 'image_'.$timeInMilliseconds.'_'.md5(uniqid()).'.png';
+                $path = Storage::disk('public')->putFileAs('/img/', $dir.'/'.$file, $newFileName);
+                dump($path);
+
+                $str = "\t\t\t[\n";
+                fputs($fd, $str);
+                $str = "\t\t\t\t'defect_id' => '$countDefect',\n";
+                fputs($fd, $str);
+                $str = "\t\t\t\t'origin' => '$unit/$detail/$file',\n";
+                fputs($fd, $str);
+                $str = "\t\t\t\t'path' => '$path',\n";
+                fputs($fd, $str);
+                $str = "\t\t\t],\n";
+                fputs($fd, $str);
+            }
+        }
+
+        return $path;
     }
 
     /**
@@ -154,7 +201,9 @@ class DevCommand extends Command
         // Создание сидера для деталей узлов
         $countUnit = 0;
         $countDetail = 0;
+        $countDefect = 0;
         foreach($this->units($path, true) as $unit) {
+            //dd($unit);
             if ($countUnit === $maxUnits) break;
             $dataArr = $this->startSeeder($unit, 'Detail');
             //dump($unit);
@@ -190,13 +239,15 @@ class DevCommand extends Command
             if ($countUnit === $maxUnits) break;
             //dd($unit);
             $dataArr = $this->startSeeder($unit, 'Defect');
+            $dataArrImg = $this->startSeeder($unit, 'Image');
             foreach($this->units($path.'/'.$unit, true) as $detail) {
                 if ($countDetail === $maxDetails) break;
                 dump($detail);
-                $this->makeDefects($unit, $detail, $path, $dataArr[0]);
+                $countDefect = $this->makeDefects($unit, $detail, $path, $dataArr[0], $countDefect, $dataArrImg);
                 $countDetail++;
             }
             $this->endSeeder($dataArr[0], $dataArr[1], 'Defect');
+            $this->endSeeder($dataArrImg[0], $dataArrImg[1],'Image');
             $countUnit++;
         }
     }

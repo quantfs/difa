@@ -20,9 +20,10 @@ class DefectsResource extends JsonResource
             'code' => $this->code,
             'defect' => $this->defect,
             'description' => $this->description,
-            'picture' => $this->picture,
+            //'picture' => $this->picture,
             'reason' => $this->reason,
-            'note' => $this->note,
+            'images' => $this->images
+            //'note' => $this->note,
         ];
     }
 }

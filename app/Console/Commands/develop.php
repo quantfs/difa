@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 
 use App\Http\Controllers\Auth\RegisterController;
 use App\Models\InputData;
+use App\Models\MotorDefect;
 use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 
@@ -28,6 +29,26 @@ class develop extends Command
      */
     public function handle()
     {
+        $defects = MotorDefect::where('detail_id', 2)->get();
+        dd($defects->toArray());
+
+        dd($defects[2]->images->toArray());
+
+        $defect = $defects[2];
+
+        dd($defect->images->toArray()[0]['origin']);
+
+
+
+
+
+
+
+
+
+
+        return;
+
         dd(Str::slug('Мопед'));
 
         return;
