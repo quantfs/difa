@@ -3,7 +3,9 @@ FROM php:8.2-fpm
 ARG user
 ARG uid
 
-RUN apt update && apt install -y \
+RUN apt update
+
+RUN apt install -y \
     git \
     curl \
     libpng-dev \
