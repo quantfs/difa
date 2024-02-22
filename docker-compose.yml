@@ -13,9 +13,9 @@ services:
         working_dir: /var/www/
         volumes:
             - ./:/var/www
-#        networks:
-#            - difa_network
-        network_mode: "host"
+        networks:
+            - difa_network
+#        network_mode: "host"
 
     db:
         image: mysql:8.0
@@ -30,9 +30,9 @@ services:
             SERVICE_NAME: mysql
         volumes:
             - ./docker-compose/mysql:/docker-entrypoint-initdb.d
-#        networks:
-#            - difa_network
-        network_mode: "host"
+        networks:
+            - difa_network
+#        network_mode: "host"
 
     nginx:
         image: nginx:alpine
@@ -43,9 +43,9 @@ services:
         volumes:
             - ./:/var/www
             - ./docker-compose/nginx:/etc/nginx/conf.d/
-#        networks:
-#            - difa_network
-        network_mode: "host"
+        networks:
+            - difa_network
+#        network_mode: "host"
 
 networks:
     difa_network:
